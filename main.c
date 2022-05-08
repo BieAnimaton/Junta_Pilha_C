@@ -127,9 +127,7 @@ int transfere(T_PILHA p, T_PILHA *p2)
 
 
 
-int junta_pilhas (T_PILHA *P1, T_PILHA *P2, T_PILHA *P3)
-{
-    int dado;
+int junta_pilhas (T_PILHA *P1, T_PILHA *P2, T_PILHA *P3) {
 
     transfere(*P2, P3);
     transfere(*P1, P3);
