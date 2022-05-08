@@ -32,7 +32,7 @@ int estado(T_PILHA p)
        if (p.topo == tamanho-1 )
           return 1;   /* pilha cheia */
        else
-          return 2;  /* pilha não vazia com capacidade de armazenamento */
+          return 2;  /* pilha nï¿½o vazia com capacidade de armazenamento */
     }
 }
 
@@ -114,12 +114,6 @@ int transfere(T_PILHA p, T_PILHA *p2)
       empilha (&paux, dado);
     }
 
-    printf("\nLista da pilha auxiliar\n");
-    listar (paux);
-    printf("\n");
-
-
-
     /* transferir para pilha destino */
      while (estado(paux)!=0)
     {
@@ -136,39 +130,9 @@ int transfere(T_PILHA p, T_PILHA *p2)
 int junta_pilhas (T_PILHA *P1, T_PILHA *P2, T_PILHA *P3)
 {
     int dado;
-    T_PILHA paux, paux2;
 
-    inicializa (&paux);
-    inicializa (&paux2);
-
-    while (estado(*P2)!=0) {
-      obter_topo (*P2, &dado);
-      desempilha (P2);
-      empilha (&paux2, dado);
-    }
-
-    while (estado(*P1)!=0) {
-      obter_topo (*P1, &dado);
-      desempilha (P1);
-      empilha (&paux, dado);
-    }
-
-
-
-
-    while (estado(paux2)!=0) {
-      obter_topo (paux2, &dado);
-      desempilha (&paux2);
-      empilha (P3, dado);
-    }
-
-    while (estado(paux)!=0) {
-      obter_topo (paux, &dado);
-      desempilha (&paux);
-      empilha (P3, dado);
-    }
-
-
+    transfere(*P2, P3);
+    transfere(*P1, P3);
 
     return (0);
 }
